@@ -1,0 +1,242 @@
+hardware-->OS--->Docker-->container with own dependency and liberary
+containers -- containers are completely isolated enivronment. thet havwe thair own processes, networks and mounts
+
+OS kernal is linux for all ubuntu, fedarro,etc.
+
+Docker image is package,template,plan and it is used to creat one or more containers.
+
+Containers are running instances of images, which are isloated and having own processes.
+
+Docker uses LXC type of container.
+image is package or templet just like VM templete/
+image is used to create one or more containers.
+container are running instance of images that are isolated and have there own environment.
+
+
+both developer team and operation team work together and make docker file.
+then docker file is used to create Docker image for application and then that image can run anywhere where docker is installed.
+
+
+Docker runs processes in isolated containers. A container is a process which runs on a host. The host may be local or remote. When an operator executes docker run, the container process that runs is isolated in that it has its own file system, its own networking, and its own isolated process tree separate from the host.
+
+
+
+Installation of Docker:- 
+
+cat /etc/*release*
+ sudo apt-get remove docker docker-engine docker.io containerd runc   // remove older version of docker
+ curl -fsSL https://get.docker.com -o get-docker.sh    // download the copy of script
+ DRY_RUN=1 sh ./get-docker.sh
+ docker
+ sudo sh get-docker.sh  // install docker by running this file
+ 
+ sudo docker version 
+ 
+ sudo docker run docker/whalesay cowsay Hello-World!    // this will take image from docker hub repo
+ 
+ run -- start a container from an image
+ 
+ docker ps // lists running containers
+ 
+ sudo docker ps -a // running as well as stop container list
+ 
+ docker stop name/containerID  // stop a container
+ 
+ docker rm name/containerID   // Remove a container permently
+ 
+ docker images   // list of images on host and size
+ 
+ docker rmi name  // remove images
+
+docker pull name   // it will download image on host and not run
+
+exec --- executes a command
+
+docker exec containername cat /etc/hosts   // this will cat the container file from container
+
+docker run -d name   // to run container in detach mode or background mode
+
+dokcer attach id/name  // to back from background to forground
+
+docker -it name   // interact with terminal
+
+docker run -p 80:5000 name    // port mapping
+
+docker run -v /opt/datadir:/var/lib/mysql name   // volume mapping it will have copy of mysql container data in host.
+
+
+docker inspect name    // it will display fill deatil of container in json formate.
+
+docker log name    // containers log
+
+docker build Dockerfile -t name   // to create image
+
+docker push nameimg     // to push image to docker hub repo
+
+
+inside docker file with capital it is instruction and other is argument
+
+docker create image in layered architechture 
+
+
+docker history name   // details of image layer with size
+
+docker build .  // build container from image
+
+Networks:--
+	Bridge --- docker run name
+	none --- docker run name --network=none
+	host --- docker run name --network=host
+
+by default network is bridge
+none is use as isolated container and it will not be able to access by host
+host is used when want to run container on host port directly
+
+
+Internal bridge network:-
+
+docker network create \
+	--driver bridge \
+	--subnet 182.18.0.0/16
+	custom-isolated-network
+	
+docker network ls  // to list all network
+
+
+FILE SYSTEM:---
+
+/var/lib/docker
+
+there are two type of mounting:-
+	1) volume mount -- it mount data in docer volume
+	2) bind mount -- it mount data in any any defined by user
+	
+	
+docker volume create data_volume
+docker run -v data_volume:/var/lib/mysql name
+		OR	
+docker run -v /data/mysql:/var/lib/mysql name
+
+
+docker run \ --mount type=bind,source=/data/mysql,target=/var/lib/mysql name
+
+
+STORAGE DRIVERS:---
+	1)AUFS  // default in ubuntu
+	2)ZFS
+	3)BTRFS
+	4)Device mapper  //fedorra
+	5)Overlay
+	6)Overlay2	
+
+
+
+
+
+
+DOCKER COMPOSE:--
+
+docker compose up   //start
+
+docker run -d --name=vote -p 5000:80 --link redis:redis voting-app    // link two container
+
+
+PRIVATE REGISTRY:--
+
+docker login private-registry.io
+
+
+
+DOCKER ENGINE :-
+
+1) Docker CLI
+2) REST API  // it is program used to talk to deamon and provides instructions
+3) Docker Deamon   // it is backfgrpund process, it manages images, containers, volumes, etc.
+
+
+namespace and cgroups
+https://www.nginx.com/blog/what-are-namespaces-cgroups-how-do-they-work/
+
+docker run --cpus=.5 ubuntu
+docker run --memory=100m ubuntu
+
+
+CONTAINER ORCHESTRATION:---
+
+docker service create --relicas=100 nodejs
+
+CONTAINER ORCHESTRATION SOLUTIONS:---
+
+1) DOCKER SWARM
+2) KUBERNETES   //mosrt popular
+3) MESOS
+
+DOCKER SWARM:---
+
+KUBERNETES::---
+
+node is a machine physical/virtual on which kubernetes and its tiol installed. and contianers are also launched in nodes.
+cluster is set of nodes. whern 1 nodes fail it has other to access.
+cluster has one master node.
+
+
+kubectl run name   // to deploy application on cluster
+
+kubectl cluster-info  // information about cluster
+
+kubectl grt nodes // list all nodes part of cluster 
+
+
+
+
+
+
+docker compose up -d // to run in detach mode
+
+docker compose down   // stop and delete networks/containers
+
+docker compose down -v // to delete volume with container/network
+
+docker compose build  // just build/rebuild images
+
+docker compose stop   // just stop containers don't delete
+
+docker compose ps    // list services
+
+docker compose push   // image to registry
+
+docker compose logs
+
+docker compose logs name
+
+docker compose exec 
+
+docker compose up -d --build   // builds the images
+
+
+
+
+
+
+USER node  // in dockerfile to change user from root to node, node will manage RUN, ENTRYPOINT, CMD only.
+
+RUN mkdir app && chown -R node:node .     // set perimissions on app dir
+
+docker-compose exec -u root    // run command as a root in container 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

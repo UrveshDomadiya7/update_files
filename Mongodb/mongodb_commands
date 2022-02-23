@@ -1,0 +1,7 @@
+monogdb --version
+sudo mongod
+mongo
+>db
+use test
+show collections
+show dbs

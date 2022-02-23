@@ -1,0 +1,7 @@
+sudo docker build -t node-app-cmd:latest .
+
+sudo docker images
+
+sudo docker run -e ENV_NODE=production -v nodeapp-cmd-volume:/uv/nodeapp -d -p 5001:3000 --name node-app-cmd node-app-cmd:latest
+
+curl localhost:5001/healthcheck

@@ -1,0 +1,17 @@
+ls -tp | tail -n +1 | sudo xargs -d '\n' -r rm -r --
+
+
+ls -tp | grep test | tail -n +1 | sudo xargs -d '\n' -r rm -r --
+
+
+#  this also work
+
+
+ls -tp | find -type d | grep test |  head -n +1 | sudo xargs -d '\n' -r rm -r --
+
+
+
+# best 
+
+ls -tp | find . -type d -name "test*" | tail -n +3 | sudo xargs -d '\n' -r rm -r --
+

@@ -1,0 +1,15 @@
+git config user.name
+
+git status 
+git add Lms_Os networking.txt passwordless_authentication prac1 prac2 task2.sh task3.sh task4.sh 
+git status 
+git commit -m "daily-updates"
+git log
+git status
+git remote add origin https://github.com/UrveshDomadiya7/Status-Update.git
+git push origin master
+git fetch origin master
+git merge origin master
+git push --force origin master
+
+

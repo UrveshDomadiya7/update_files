@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+ node-app-compose:
+    image: node-app-compose:latest
+    build:
+      context: .
+    environment:
+        - ENV_NODE=production
+    container_name: nodeapp-compose
+    volumes:
+            - type: volume
+              source: nodeapp_volume
+              target: /uv/nodeapp/logs
+            #./nodeapp_volume:/uv/nodeapp/logs  
+    ports:
+       - '5000:3000'
+    command: node server.js
+
+volumes:
+    nodeapp_volume:

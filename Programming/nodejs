@@ -1,0 +1,17 @@
+ node.js is javascript on your bachend servers.
+ execution of javascript on server is not done by node . it done with vertiual machine(V8/Chakra). node is just a cordinator who insrtuct vertiual machine.
+ 
+ when you write javascript for node. node will pass your javascript to V8. V8 will run the javascript and tell node what will be output and node will display the output.
+ 
+ javascript code ---- Node --- V8 --- Node output
+ 
+ 
+ 
+ REPL:-- Read, Eval, Print, Loop
+ 
+ Timers:-- setTimeout, setInterval
+ 
+ Node's CLI :-  REPL, Execute Script
+ 
+ node -h | less
+ 

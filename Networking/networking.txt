@@ -1,0 +1,8 @@
+DNS(Domadin name System)  ---- request for specific domain into ip address.
+A record ---- It indicates the ip address of a given domain.
+NS record ---- NS records tell the internet where to go to find the domain ip address.
+MX record ---- for managing a mail related task.
+SOA records ---- stores important infromation about the domain. like contact mail, serial number, source host, etc.
+
+PTR record ---- reverse of A record. maps a ip address with the hostname.
+SRV ---- Most other DNS records only specify a server or an IP address, but SRV records include a port at that IP address as well. it is used to identify computer that host specifics service.

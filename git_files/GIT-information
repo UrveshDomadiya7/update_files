@@ -1,0 +1,41 @@
+ 
+git diff numer1 numbr2 -- it will display differnece between both files
+git checkout commitnumber ----- it will take same file from github to our system
+
+
+bug trackers
+eg. Bugzilla, mantis
+store bug reports
+
+Project management tools
+eg. jira
+tracks work
+allocates tasks
+
+the build machine / autiomation server
+eg. jenkins
+build and packages the system 
+deploys to testing 
+runs code matrics
+runs automated tests
+sometimes even deploys to production
+
+
+
+Git strong Points 
+-----Fast
+-----Smart
+-----Flexible
+----- Safe
+
+
+
+
+
+when we have to make changes on others user repo then:
+1) fork that repo
+2) now that repo will be added to our github repo
+3) now clone that repo in to our system
+4) then make changes in our system file
+5) then push that commit to our repo
+6) then pull request to other user repo to make change in there repo

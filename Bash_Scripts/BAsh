@@ -1,0 +1,100 @@
+Quote in Variable
+" " is used when we called a variable
+#!/bin/bash
+name="......."
+echo "$name"
+echo '$name'
+
+
+Bash Variables
+Syntex : Variable_name=value
+
+ types : System-Defined Variables - These are the pre-defined variables as they are created and maintained by the LINUX operating system itself. Their standard convention is that generally they are defined in capital letters,
+User-Defined Variables - These variables are created and maintained by the user. Generally, these types of variables are defined in LOWER_CASES.
+
+Read User Input
+Syntex : read <variable_name>
+Synrex : read -p PROMPT <variable_name>
+read -p "username:" user_var
+echo "The username is: " $user_var
+
+ read -sp PROMPT <variable_name>
+-s allows a user to keep the input on silent mode and -p to input on newly command prompt
+
+ read -a <variable_name>
+-a helps script to read an array, and variable_name refers to an array
+
+Bash Date Formatting
+Syntex : $ date +<format-option-codes><format-option-codes>
+
+Bash Arithmetic Operators
+Addition (+): Binary operation used to add two operands.
+Subtraction (-): Binary operation used to subtract two operands.
+Multiplication (*): Binary operation used to multiply two operands.
+Division (/): Binary operation used to divide two operands.
+Modulus (%): Binary operation used to find remainder of two operands.
+Increment Operator (++): Unary operator used to increase the value of operand by one.
+Decrement Operator (- -): Unary operator used to decrease the value of a operand by one
+
+Bash If
+A basic if statement commands that if a particular condition is true, then only execute a given set of actions. If it is not true, then do not execute those actions.
+
+Bash Else
+Bash if-else statements are used to perform conditional tasks in the sequential flow of execution of statements
+Synext : if [ condition ];
+then
+<if block commands>
+else
+<else block commands>
+fi
+
+Bash Else if
+Syntex:if [ condition ];
+then
+<commands>
+elif [ condition ];
+then
+<commands>
+else
+<commands>
+fi
+
+Bash Case
+Syntex : case expression in
+pattern_1)
+statements
+;;
+pattern_2)
+statements
+;;
+pattern_3|pattern_4|pattern_5)
+statements
+;;
+pattern-n)
+statements
+;;
+*)
+statements
+;;
+esac
+
+Bash For Loop
+for variable in list
+do
+commands
+done
+
+
+Bash While Loop
+	The bash while loop can be defined as a control flow statement which allows executing the given set of commands repeatedly as long as the applied condition evaluates to true.
+	
+	Syntax of Bash While Loop
+
+	while [ expression ];  
+	do  
+	commands;  
+	multiple commands;  
+	done  
+	
+	
+	

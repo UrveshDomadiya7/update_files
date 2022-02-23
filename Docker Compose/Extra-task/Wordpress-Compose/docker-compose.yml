@@ -1,0 +1,52 @@
+version: '3.3'
+services:    
+    nginx:
+        image: nginx:latest
+        container_name: wp-nginx
+        ports:
+        - '8090:80'
+        volumes:
+        - ./nginx:/etc/nginx/conf.d
+        - ./logs/nginx:/var/log/nginx
+        - ./wordpress:/var/www/html
+        links:
+        - wordpress
+        restart: always
+
+    mysql:
+        image: mariadb
+        container_name: wp-mysql
+        ports:
+        - '3306:3306'
+        volumes:
+        - db-data:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: db_name      
+            MYSQL_USER: user_name      
+            MYSQL_PASSWORD: user_pass
+            MYSQL_ROOT_PASSWORD: aqwe123
+    
+        restart: always
+
+    wordpress:
+        image: wordpress:php7.3-fpm-alpine
+        container_name: wp-php-fpm
+        ports:
+        - '9000:9000'
+        volumes:
+            - ./wordpress:/var/www/html
+        environment:
+             WORDPRESS_DB_NAME: db_name
+             WORDPRESS_TABLE_PREFIX: wp_
+             WORDPRESS_DB_HOST: mysql
+             MYSQL_ROOT_PASSWORD: aqwe123
+             WORDPRESS_DB_USER: user_name
+             WORDPRESS_DB_PASSWORD: user_pass
+        depends_on:     
+            - mysql
+        links:
+            - mysql
+        restart: always
+
+volumes:
+    db-data: {}

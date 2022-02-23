@@ -1,0 +1,44 @@
+Container orchestration is the automation of much of the operational effort required to run containerized workloads and services
+
+
+but there's no way to properly manage a production-scale container environment without automation. This task should fall to your orchestrator, which is a process that automates and manages a large number of containers and how they interact with each other.
+
+
+Orchestrators perform the following tasks:
+
+    Scheduling: When given a container image and a resource request, the orchestrator finds a suitable machine on which to run the container.
+    Affinity/Anti-affinity: Specify whether a set of containers should run near each other for performance or far apart for availability.
+    Health monitoring: Watch for container failures and automatically reschedule them.
+    Failover: Keep track of what's running on each machine and reschedule containers from failed machines to healthy nodes.
+    Scaling: Add or remove container instances to match demand, manually or automatically.
+    Networking: Provide an overlay network that coordinates containers to communicate across multiple host machines.
+    Service discovery: Enable containers to locate each other automatically even as they move between host machines and change IP addresses.
+    Coordinated application upgrades: Manage container upgrades to avoid application down time and enable rollback if something goes wrong.
+
+
+
+
+All containers are created from container images 
+
+As mentioned earlier, container images are composed of a series of layers. Each layer contains a set of files that, when overlaid together, represent your container image. 
+
+
+
+Container orchestration
+
+Orchestrators are a critical piece of infrastructure when setting up a container-based environment. While you can manage a few containers manually using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which is where orchestrators come in.
+
+Container orchestrators were built to help manage containers at scale and in production. Orchestrators provide functionality for:
+
+Orchestrators help you grow containerized apps at scale, providing functionality for:
+
+    Deploying at scale
+    Workload scheduling
+    Health monitoring
+    Failing over when a node fails
+    Scaling up or down
+    Networking
+    Service discovery
+    Coordinating app upgrades
+    Cluster node affinity
+

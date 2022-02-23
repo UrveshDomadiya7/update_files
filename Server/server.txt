@@ -1,0 +1,28 @@
+Lms- Server
+
+completed chapter-1 Introduction and Installation
+Installation of nginx on centOS.
+
+halfway to chapter-2 VHosts and Directives
+
+
+what is vHost --- vHost is related to domain in which domain related information is mentioned.
+
+
+SSL certificate-- the ssl sertifate is used for server data encrypt to keep secure the infromation.
+
+
+Upstream --- upstream work as the proxy which will work as intermediat and it will pass clinet request to server and vise versa.
+
+
+location --- it is used as path based routing. with help of this we can do mutiple domain run with one server.
+
+
+
+
+
+
+
+LMS - OS
+
+boot ---- the process when the system boot.

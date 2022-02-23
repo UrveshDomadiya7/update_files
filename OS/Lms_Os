@@ -1,0 +1,184 @@
+109.2 Persistent Network Configuration
+
+NETWORKMANAGER
+----- nmcli dev show - it will show network avaliable on our system in details.
+----- nmcil con show - it shows connected network devices on our system.
+----- nmcil con down "connection name" - down the perticular network connection.
+----- nmcil con up "connection name"- up that network connection.
+----- nmcil device status 
+----- nmcil con delete "connection name"	
+----- nmcil con add con-name "name" type ethernet - new connection add ( ip4 (ip) gw4 (ip) if name "device name" autocorrect )
+----- nmcil con edit 
+----- nmcil con mod - for modifie
+----- ip addr show - display IP addrerss information.
+----- ip route add 
+----- ip route dlt 
+----- ip route show - display the route table.
+----- ip -s addr - show statistics on configured interfaces.
+----- hostnamectl - used for configure the computer's host name.
+----- hostnamectl set-hostname "name" - for set the hostname.
+
+LEGACY NETWORKING TOOLS
+----- if config - show ip details 
+----- ifdown (name) - used to bring down a speific network interface.
+----- ifup (name) - used to bring up a specifc network interface.
+----- route - display the routing table.
+----- route -n - display table with their name
+----- route del (name)
+
+
+109.3 Basic Network Troubleshooting
+TESTING CONNECTIVITY
+----- ping ip - used to test system ability to communicate with other network device
+----- ping -c (ex:5) ip - show number of ICMP packets (five lines)
+----- traceroute ip - display a listing of the hops a packets will traverse to a get to a destinaton or used to verify network work.
+----- tracepath ip - used for utlizes UDP packets instead of ICMP.
+----- netstat - used to display network connection and their state on a system.
+----- netstat -tl - display all listening TCP port
+----- netstat -ul - display all listening udp port
+----- netstat -r - display route table 
+----- ss - showcase statistics is equivalent of the netstat command.
+
+
+109.4 Configure Client-Side DNS
+THE BASICS OF DNS RESOLUTION FROM LINUX
+----- /etc/hosts - it contain the localhost entry mapped to the lookback address.
+----- /etc/hostname - system will use this file for a computer's hostname . the hostnamectl fill will write a system's new hostname to this file.
+----- /etc/resolve.conf - this file contains the ip address of DNS name serves that the host will use for name resolution.
+----- /etc/nsswitch.conf - file is used to determine the order in which name resolution occurs.
+----- host (name) - command used to resolve domain names to ip address.
+----- dig (name) - command is used to query DNS server for particular types of DNS records.
+----- dig -t MX google.com (example)
+
+
+Topic 200: Capacity Planning
+MEASURE AND TROUBLESHOOT RESOURCE USAGE
+----- man uptime 
+----- update - It is used to find out how long the system is active (running).
+----- date - current date
+----- who - user name
+----- uptime -V - shows version
+----- yum provides */uptime
+----- utap - all uptime binary files in utap : location cd /var/run.
+
+
+----- iostat - report central processing unit (cpu) statistics and input/output statistics for devices.
+----- iostat -c - show cpu usage
+----- iostat -c -h 
+----- iostat -c 2(time in sc) 5(row)
+----- df -h - display file system in human redable formet.
+----- iostat -d - display only device process.
+
+SAR - collect, report , or save system activity information
+----- sar | head  
+----- chkconfig sysstat on
+----- service sysstat start 
+
+FREE - show used,free,shared,buffers n etc storage (memoray & swap).
+----- free
+----- free -m - show im MB
+----- free -g - show in gigabyte
+----- free -h - human readable format.
+
+
+VMSTAT - report virtual memory statictics
+----- vmstat 
+----- vmstat 5(sec) - process display at every 5 seconds.
+----- vmstat 5 -t - (-t) shows timtamp 
+----- vmstat -s - (-s) shows summary 
+----- while true; do vmstat -s; sleep 5 (summary process repeate at every 5 sec)
+
+LSOF - list open files
+----- lsof | head -10 - show first 12 top files
+----- lsof | wc -l - it count the total words.
+----- lsof -u user | wc -l - (-u) only count user words.
+----- lsof -u user | head -10
+----- ps 
+----- ps -e (-e) disply all process
+----- ps -ef | grep rsyslog
+----- pstree 
+----- pstree -A
+----- top 
+
+----- w - show user and system info 
+----- w -s
+----- w -i - just show ip 
+----- w user
+----- w root
+
+iOTOP - shows disk usage information for open processes (ommand is used to report the CPU as well as input/output statistics for devices and partitions since last system boot)
+
+----- collectd - collects statistics related to system performance
+----- sudo apt-get install collectd - install command 
+
+----- sudo lighttpd-enable-mod fastcgi-php
+----- ervice lighttpd restart
+
+
+----- monitoring tools for linux
+	SolarWinds NetFlow Traffic Analyzer.
+	Paessler PRTG Network Monitor.
+	Nagios Network Analyzer.
+	Zenoss Cloud.
+	Icinga 2.
+	OpenNMS.
+	Cacti.
+	Zabbix.
+
+ICINGA - is an open-source computer and network monitoring appilication.
+
+FILESYSTEM AND DEVICES
+----- mount - mount a filesystem 
+
+----- fuser - identify processes using files or sockets(fuser displays the PIDs of processes using the specified files or  file systems.   In the default display mode, each file name is followed by a letter denoting the type of access:
+	       c      current directory.
+              e      executable being run.
+              f      open file.  f is omitted in default display mode.
+              F      open file for writing.  F is omitted in  default  display
+                     mode.
+              r      root directory.
+              m      mmap'ed file or shared library.
+              .      Placeholder, omitted in default display mode.
+
+----- fdisk -l
+----- mount -t ext3 /dev/xvdj1 /mnt/data - to mount (ext4 is the file system type. (rw,relatime,errors=remount-ro) is the mount options.
+----- mount -o remoute,rw /mnt/data 
+----- umount /mnt/data
+----- mount -a - show all
+
+e2label - Change the label on an ext2/ext3/ext4 filesystem
+
+sync - Synchronize cached writes to persistent storage (If one or more files are specified, sync only them, or their containing file systems).
+swapon - swapon, swapoff - enable/disable devices and files for paging and swap‐ping (swapon is used to specify devices on which paging and swapping  are  to take place)
+----- swapoff -a (all)
+----- swapon -s (summary)
+
+mkfs - build a Linux filesystem (This  mkfs  frontend  is  deprecated  in  favour of filesystem specific mkfs.<type> utils).
+----- which mkfs - to find/know location
+----- ls -al /sbin/mkfs*
+----- which fsck
+----- ls -al /sbin/fsc*
+
+dumpe2fs - dump ext2/ext3/ext4 filesystem information(dumpe2fs prints the super block and blocks group  information  for  the filesystem present on device).
+
+tune2fs  -  adjust  tunable  filesystem  parameters  on  ext2/ext3/ext4 filesystems(tune2fs allows the  system  administrator  to  adjust  various  tunable filesystem  parameters  on  Linux ext2, ext3, or ext4 filesystems.  The current values of these options can be displayed by using the -l optionto tune2fs(8) program, or by using the dumpe2fs(8) program.
+----- man tune2fs
+
+debugfs - ext2/ext3/ext4 file system debugger (The debugfs program is an interactive file system debugger. It  can  be used  to  examine  and  change the state of an ext2, ext3, or ext4 file system).
+
+----- sudo apt-get install xfsprogs
+----- xfsrestore -I (show all backup details)
+
+ZFS - is a combined filesystem and logical volume manager
+btrfs - is used to perform several whole filesystem level tasks, including all the regular filesystem operations like resizing, space stats, label setting/getting, and defragmentation. There are other whole filesystem tasks like scrub or balance that are grouped in separate commands.
+----- swapon -a
+----- swapon -s show a particular file location on partition 
+----- 82 - swapon
+----- 83 - simple  memory
+----- mkswap - create swapspace
+----- sudo apt-get install cryptsetup
+
+NETWORK CONFIGURATION 
+----- Address Resolution Protocol (ARP)
+----- iwconfig - used to configure wirelss network from the command line.
+----- NC -l 80 - netcat

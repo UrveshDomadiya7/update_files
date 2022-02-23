@@ -1,0 +1,7 @@
+sudo docker build -t run:latest .
+
+sudo docker run --entrypoint echo run:latest 10
+
+sudo docker run --entrypoint ls run:latest etc
+
+sudo docker ps

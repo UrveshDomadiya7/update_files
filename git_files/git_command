@@ -1,0 +1,23 @@
+git log 			// it will display the history of every thing that happens to a repository.
+git status 			// display the state of the working directory
+git branch 			// Instead of copying files from directory to directory, Git stores a branch as a reference to a commit.
+git branch -r 			// -r flag to show all remote branches
+git branch -a 			// -a flag for all branches.
+git branch --verbose 		// it will show verbose
+git init 			// to initialise the current directory as a git repo
+git add 			// Add a file to staging 
+git commit -m " message" 	// Commit all staged files to git
+git remote add origin		// To add a remote to your local copy
+git push origin main 		// to push your local commits to the main branch of the origin remote
+git clone 			// Download a remote repo
+git branch -M main 		// Move/rename a branch even if the new branch name already existsss
+git remote 			// View all remote connections
+git remote --verbose 		//To view your remote repositories
+git checkout -b name 		// Create a new branch and switch to it	
+git branch -d name 		// Delete a merged branch
+git checkout name 		// Switch to a branch & update the working directory
+git rm filename 		// Remove a file from working directory & staging area, then stage the removal
+git rm --cached filename 	// Remove from staging area only
+git rm -r foldername 		// remove directory/folder
+git pull 			// Fetch the remote repo's copy of the current branch, then merge
+git push 			// Upload local content to remote repo

@@ -1,0 +1,17 @@
+Lms- Server
+
+completed chapter-1 Introduction and Installation halfway to chapter-2 VHosts and Directives
+
+what is vHost --- vHost is related to domain in which domain related information is mentioned.
+
+SSL certificate-- the ssl certificate is used for server data encrypt to keep secure the infromation.
+
+Upstream --- upstream work as the proxy which will work as intermediat and it will pass clinet request to server and vise versa.
+
+basic load balancing ---  Load balancing is a core networking solution used to distribute traffic across multiple servers in a server farm. Load balancers improve application availability and responsiveness and prevent server overload.
+
+location directive - The location directive within NGINX server block allows to route request to correct location within the file system. The directive is used to tell NGINX where to look for a resource by including files and folders while matching a location block against an URL.
+
+Return directive - Return is the basic directive that performs URL rewriting and is simple to understand. It doesn’t use regular expressions, but it can include variables to parse, captured from the location block’s path. Usually, return directive is used to redirect the request URL to a different location, and therefore it often uses HTTP codes like 301 for permanent redirection, and 302 for temporary redirection. The following code snippets demonstrate some of the use cases of the return directive.
+
+

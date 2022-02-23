@@ -1,0 +1,61 @@
+Installation:- 
+
+sudo apt update // update local package 
+sudo apt install apache2 // install the apache2 package
+sudo systemctl status apache2 // it will check status of apache2
+
+
+cd /var/www/
+sudo mkdir apache_practical
+cd apache_practical/
+ls
+sudo nano apacha-static.html
+	//
+		<html>
+		    <head>
+			<title>Welcome to Your_domain!</title>
+		    </head>
+		    <body>
+			<h1><center> Hello!! Urvesh </center></h1>
+			<h1>Success!  The your_domain virtual host is working!</h1>
+		    </body>
+		</html>
+
+	//
+	
+ls
+cd /etc/apache2/
+ls
+cd sites-available/ 
+ls
+sudo touch apache-static.conf
+ls
+sudo nano apache-static.conf //changes
+		
+	//	
+		<VirtualHost *:80>
+		    ServerAdmin webmaster@localhost
+		    ServerName apache-static
+		    ServerAlias www.apache-static
+		    DocumentRoot /var/www/apache_practical/
+		</VirtualHost>
+
+	//
+
+// copy the same apache-static.conf file in location site-enabled in location /etc/apache2/sites-enabled/
+
+cd /etc/apache2/sites-enabled/
+
+cd /etc/apache2/sites-available/
+
+//enable the file with the a2ensite tool
+sudo a2ensite apacha-static.conf 
+
+//Disable the default site defined in 000-default.conf
+sudo a2dissite 000-default.conf 
+
+//test for configuration errors
+sudo apache2ctl configtest //status : ok
+
+//Restart Apache for changes
+sudo systemctl restart apache2

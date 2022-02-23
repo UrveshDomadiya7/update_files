@@ -1,0 +1,53 @@
+Installation:- 
+
+sudo apt update // update local package
+sudo apt install nginx // install the nginx package
+systemctl status nginx.service // it will check status of nginx
+
+
+cd /var/www/html
+ls
+sudo nano static.html
+	//
+		<html>
+			<head>
+			<title>Welcome to your static Site...</title>
+			</head>
+			<body>
+			<h1>Success! your static site is working!</h1>
+			<h1><center> Hello Urvesh </center></h1>
+			</body>
+		</html>
+	//
+	
+ls
+cd /etc/nginx/
+ls
+cd sites-available/ 
+ls
+sudo touch nginx-static
+ls
+sudo nano nginx-static //changes
+
+	//
+		server {
+		listen 80;
+		listen [::]:80;
+		root /var/www/html;
+		index index.html index.htm index.nginx-debian.html;
+		server_name static.com www.static;
+		location / {
+		        try_files $uri $uri/ =404;
+			}
+		}
+
+	//
+	
+// copy the same nginx-static file in location site-enabled in location /etc/nginx/sites-enabled/	
+
+cd /etc/nginx/sites-enabled
+
+sudo nginx -t // status check 
+
+//Restart nginx for changes
+systemctl restart nginx
